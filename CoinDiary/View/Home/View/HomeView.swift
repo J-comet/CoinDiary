@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
-    private let headerMinHeight: CGFloat = 200
+    private let headerMinHeight: CGFloat = 240
     
     @StateObject var viewModel = HomeViewModel()
     
@@ -35,6 +35,7 @@ struct HomeView: View {
                         .offset(y: (offset > 0 ? -offset : 0))
                 }
                 .frame(minHeight: headerMinHeight)
+                .background(Color(.systemGray6))
                 
                 LazyVStack(spacing: 0, pinnedViews: [.sectionHeaders]) {
                     Section(header: HomeHeaderView()) {
@@ -61,7 +62,7 @@ struct HomeView: View {
 
         }
         .task {
-            viewModel.combineFetchAllMarket()
+            viewModel.fetchAllMarket()
         }
         .navigationViewStyle(StackNavigationViewStyle())
         

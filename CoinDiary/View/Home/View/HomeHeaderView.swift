@@ -32,7 +32,7 @@ struct HomeHeaderView: View {
                 Spacer()
             }
         }
-        .frame(height: 44)
+        .frame(height: 50)
         .padding(.horizontal)
         .background(Color(uiColor: .systemGray6))
         

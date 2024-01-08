@@ -82,6 +82,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		C0D6BF422B4C685700585540 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		C0F6906A2B4C323B009808AB = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +108,7 @@
 		C0F690752B4C323B009808AB /* CoinDiary */ = {
 			isa = PBXGroup;
 			children = (
+				C0D6BF422B4C685700585540 /* Utils */,
 				C0F690762B4C323B009808AB /* CoinDiaryApp.swift */,
 				C0F6907A2B4C323D009808AB /* Assets.xcassets */,
 				C0D6BF392B4C571700585540 /* API */,
