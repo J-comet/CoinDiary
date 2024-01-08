@@ -10,6 +10,9 @@
 		C0D6BF312B4C3EC000585540 /* HomeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6BF302B4C3EC000585540 /* HomeRowView.swift */; };
 		C0D6BF332B4C45FA00585540 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6BF322B4C45FA00585540 /* HomeHeaderView.swift */; };
 		C0D6BF362B4C499D00585540 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6BF352B4C499D00585540 /* UIApplication+Extension.swift */; };
+		C0D6BF3B2B4C573100585540 /* UpbitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6BF3A2B4C573100585540 /* UpbitAPI.swift */; };
+		C0D6BF3E2B4C575D00585540 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6BF3D2B4C575D00585540 /* Market.swift */; };
+		C0D6BF412B4C57D700585540 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6BF402B4C57D700585540 /* HomeViewModel.swift */; };
 		C0F690772B4C323B009808AB /* CoinDiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F690762B4C323B009808AB /* CoinDiaryApp.swift */; };
 		C0F6907B2B4C323D009808AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0F6907A2B4C323D009808AB /* Assets.xcassets */; };
 		C0F6907E2B4C323D009808AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0F6907D2B4C323D009808AB /* Preview Assets.xcassets */; };
@@ -22,6 +25,9 @@
 		C0D6BF302B4C3EC000585540 /* HomeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRowView.swift; sourceTree = "<group>"; };
 		C0D6BF322B4C45FA00585540 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		C0D6BF352B4C499D00585540 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		C0D6BF3A2B4C573100585540 /* UpbitAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpbitAPI.swift; sourceTree = "<group>"; };
+		C0D6BF3D2B4C575D00585540 /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
+		C0D6BF402B4C57D700585540 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		C0F690732B4C323B009808AB /* CoinDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0F690762B4C323B009808AB /* CoinDiaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDiaryApp.swift; sourceTree = "<group>"; };
 		C0F6907A2B4C323D009808AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,6 +56,32 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		C0D6BF392B4C571700585540 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				C0D6BF3A2B4C573100585540 /* UpbitAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		C0D6BF3C2B4C575700585540 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C0D6BF3D2B4C575D00585540 /* Market.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C0D6BF3F2B4C57C700585540 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C0F690892B4C364A009808AB /* HomeView.swift */,
+				C0D6BF302B4C3EC000585540 /* HomeRowView.swift */,
+				C0D6BF322B4C45FA00585540 /* HomeHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C0F6906A2B4C323B009808AB = {
 			isa = PBXGroup;
 			children = (
@@ -69,11 +101,13 @@
 		C0F690752B4C323B009808AB /* CoinDiary */ = {
 			isa = PBXGroup;
 			children = (
-				C0D6BF342B4C499100585540 /* Extension */,
-				C0F690842B4C3300009808AB /* View */,
 				C0F690762B4C323B009808AB /* CoinDiaryApp.swift */,
 				C0F6907A2B4C323D009808AB /* Assets.xcassets */,
+				C0D6BF392B4C571700585540 /* API */,
+				C0D6BF342B4C499100585540 /* Extension */,
+				C0D6BF3C2B4C575700585540 /* Model */,
 				C0F6907C2B4C323D009808AB /* Preview Content */,
+				C0F690842B4C3300009808AB /* View */,
 			);
 			path = CoinDiary;
 			sourceTree = "<group>";
@@ -99,9 +133,8 @@
 		C0F690872B4C3635009808AB /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				C0F690892B4C364A009808AB /* HomeView.swift */,
-				C0D6BF302B4C3EC000585540 /* HomeRowView.swift */,
-				C0D6BF322B4C45FA00585540 /* HomeHeaderView.swift */,
+				C0D6BF3F2B4C57C700585540 /* View */,
+				C0D6BF402B4C57D700585540 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -187,10 +220,13 @@
 				C0D6BF332B4C45FA00585540 /* HomeHeaderView.swift in Sources */,
 				C0D6BF362B4C499D00585540 /* UIApplication+Extension.swift in Sources */,
 				C0F6908C2B4C39DE009808AB /* MyView.swift in Sources */,
+				C0D6BF412B4C57D700585540 /* HomeViewModel.swift in Sources */,
 				C0F6908A2B4C364A009808AB /* HomeView.swift in Sources */,
 				C0F690862B4C3313009808AB /* CoinDiaryTabView.swift in Sources */,
 				C0F690772B4C323B009808AB /* CoinDiaryApp.swift in Sources */,
 				C0D6BF312B4C3EC000585540 /* HomeRowView.swift in Sources */,
+				C0D6BF3B2B4C573100585540 /* UpbitAPI.swift in Sources */,
+				C0D6BF3E2B4C575D00585540 /* Market.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

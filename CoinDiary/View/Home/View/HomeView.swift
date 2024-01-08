@@ -9,6 +9,10 @@ import SwiftUI
 
 struct HomeView: View {
     
+    private let headerMinHeight: CGFloat = 200
+    
+    @StateObject var viewModel = HomeViewModel()
+    
     @State private var offsetY: CGFloat = CGFloat.zero
     
     var body: some View {
@@ -26,17 +30,18 @@ struct HomeView: View {
                         .clipped()
                         .frame(
                             width: geometry.size.width,
-                            height: 250 + (offset > 0 ? offset : 0)
+                            height: headerMinHeight + (offset > 0 ? offset : 0)
                         )
                         .offset(y: (offset > 0 ? -offset : 0))
                 }
-                .frame(minHeight: 250)
+                .frame(minHeight: headerMinHeight)
                 
                 LazyVStack(spacing: 0, pinnedViews: [.sectionHeaders]) {
                     Section(header: HomeHeaderView()) {
-                        ForEach(0..<50) { item in
+                        ForEach(viewModel.markets, id: \.market) { item in
                             // frame 을 지정해둬야 보이는 영역의 ImageView 만 이미지 로드 함
-                            Text("sdsdsd")
+
+                            HomeRowView(item: item)
                                 .frame(maxWidth: .infinity)
                                 .background(.white)
                         }
@@ -45,12 +50,12 @@ struct HomeView: View {
             }
             .overlay(
                 Rectangle()
-                    .foregroundColor(.white)
+                    .foregroundStyle(Color(uiColor: .systemGray6))
                     .frame(height: UIApplication.shared.currentUIWindow()?.safeAreaInsets.top)
                     .edgesIgnoringSafeArea(.all)
-                    .opacity(offsetY > -240 ? 0 : 1)
+                    .opacity(offsetY > -headerMinHeight ? 0 : 1)
                 , alignment: .top
-            )
+            )            
 //                        .clipped()   // 상단 safeArea 영역 침범하지 않고 스티키 헤더 사용할 때
 //            .edgesIgnoringSafeArea(.top) // 상단 safeArea 영역 무시하기
 
