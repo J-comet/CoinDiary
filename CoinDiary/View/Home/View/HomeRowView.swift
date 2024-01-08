@@ -15,14 +15,14 @@ struct HomeRowView: View {
         GeometryReader { geometry in
             VStack {
                 Spacer()
-                HStack(alignment: .center, spacing: 8) {
+                HStack(alignment: .center, spacing: 16) {
                     
                     VStack {
-                        Text(item.korean)
+                        Text(item.english)
                             .fontWeight(.bold)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         
-                        Text(item.english)
+                        Text(item.korean)
                             .font(.caption)
                             .foregroundStyle(.gray)
                             .frame(maxWidth: .infinity, alignment: .leading)

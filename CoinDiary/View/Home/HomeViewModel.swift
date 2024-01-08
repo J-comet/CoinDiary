@@ -6,42 +6,33 @@
 //
 
 import Foundation
+import Combine
 
 final class HomeViewModel: ObservableObject {
     
-//    @Published var markets: [Market] = []
-    
-    @Published var markets: [Market] = [
-        Market(market: "aaa1", korean: "ㄴㄴㄴ", english: "ssss"),
-        Market(market: "aaa2", korean: "ㄴㄴㄴ", english: "ssss"),
-        Market(market: "aaa3", korean: "ㄴㄴㄴ", english: "ssss"),
-        Market(market: "aaa4", korean: "ㄴㄴㄴ", english: "ssss"),
-        Market(market: "aaa5", korean: "ㄴㄴㄴ", english: "ssss")
-    ]
+    @Published var markets: [Market] = []
+    var cancellables = Set<AnyCancellable>()
     
     func combineFetchAllMarket() {
-        
-    }
-    
-    func fetchAllMarket() {
-        let url = URL(string: "https://api.upbit.com/v1/market/all")!
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data else {
-                print("데이터 없음")
-                return
-            }
-            
-            // do try catch 를 사용했을 때 에러를 확인할 수 있음.
-            do {
-                let decodedData = try JSONDecoder().decode([Market].self, from: data)
-                DispatchQueue.main.async { [weak self] in
-                    self?.markets = decodedData
-//                    completionHandler(decodedData)
+        guard let url = URL(string: "https://api.upbit.com/v1/market/all") else { return }
+        URLSession.shared.dataTaskPublisher(for: url)
+            .subscribe(on: DispatchQueue.global(qos: .background))
+            .receive(on: DispatchQueue.main)
+            .tryMap { data, response -> Data in
+                guard
+                    let response = response as? HTTPURLResponse,
+                    response.statusCode >= 200 && response.statusCode < 300 else {
+                    throw URLError(.badServerResponse)
                 }
-            } catch {
-                print(error)
+                return data
             }
-        }.resume()
+            .decode(type: [Market].self, decoder: JSONDecoder())
+            .sink { completion in
+                print("Completion: \(completion)")
+            } receiveValue: { [weak self] markets in
+                self?.markets = markets
+            }
+            .store(in: &cancellables)
     }
     
 }

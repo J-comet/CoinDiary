@@ -13,7 +13,7 @@ struct HomeHeaderView: View {
         GeometryReader { geometry in
             VStack {
                 Spacer()
-                HStack(alignment: .center, spacing: 8) {
+                HStack(alignment: .center, spacing: 16) {
                     
                     Text("코인명")
                         .font(.subheadline)

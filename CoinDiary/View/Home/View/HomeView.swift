@@ -60,6 +60,9 @@ struct HomeView: View {
 //            .edgesIgnoringSafeArea(.top) // 상단 safeArea 영역 무시하기
 
         }
+        .task {
+            viewModel.combineFetchAllMarket()
+        }
         .navigationViewStyle(StackNavigationViewStyle())
         
     }
