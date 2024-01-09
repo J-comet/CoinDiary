@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeRowView: View {
     
-    let item: Market
+    let item: HomeCoinRow
     
     var body: some View {
         GeometryReader { geometry in
@@ -18,23 +18,23 @@ struct HomeRowView: View {
                 HStack(alignment: .center, spacing: 16) {
                     
                     VStack {
-                        Text(item.english)
+                        Text(item.market.english)
                             .fontWeight(.bold)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         
-                        Text(item.korean)
+                        Text(item.market.korean)
                             .font(.caption)
                             .foregroundStyle(.gray)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     .frame(width: geometry.size.width / 2.5)
                     
-                    Text("현재가")
+                    Text("\(item.ticker.tradePrice)")
                         .font(.subheadline)
                         .foregroundStyle(.gray)
                         .frame(width: geometry.size.width / 3.75)
                     
-                    Text(item.market)
+                    Text("\(item.ticker.accTradePrice)")
                         .font(.subheadline)
                         .foregroundStyle(.gray)
                         .frame(width: geometry.size.width / 3.75)
@@ -50,5 +50,7 @@ struct HomeRowView: View {
 }
 
 #Preview {
-    HomeRowView(item: Market(market: "1", korean: "2", english: "3"))
+    HomeRowView(item: 
+                   HomeCoinRow(market: Market(market: "market", korean: "korean", english: "english"))
+    )
 }

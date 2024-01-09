@@ -10,18 +10,55 @@ import Combine
 
 final class HomeViewModel: ObservableObject {
     
-    @Published var markets: [Market] = []
-    var cancellables = Set<AnyCancellable>()
+    var cancellable = Set<AnyCancellable>()
+    
+    private var markets: [Market] = []
+    
+    @Published var homeTickers: [HomeCoinRow] = []
+    
+    init() {
+        WebSocketManager.shared.openWebSocket()
+        fetchAllMarket()
+        
+        WebSocketManager.shared.coinTickerSbj
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] ticker in
+                guard let self else { return }
+                guard let market = markets.filter({ $0.market == ticker.code }).first else { return }
+                let newItem = HomeCoinRow(market: market, ticker: ticker)
+                
+                if let index = homeTickers.firstIndex(where: { $0.market.market == ticker.code }) {                    
+                    homeTickers[index] = newItem
+                }
+            }
+            .store(in: &cancellable)
+    }
+    
+    deinit {
+        WebSocketManager.shared.closeWebSocket()
+    }
     
     func fetchAllMarket() {
         UpbitAPI.fetchMarket()
             .sink { completion in
                 print("Completion: \(completion)")
             } receiveValue: { [weak self] markets in
-                self?.markets = markets
+                guard let self else { return }            
+                self.markets = markets
+                let marketCodes = markets.map { $0.market }
+                let testCode = Array(marketCodes[0..<10])
+//                WebSocketManager.shared.send(marketCodes: testCode)
+                WebSocketManager.shared.send(marketCodes: marketCodes)
+                
+                // 처음 실행시 모든 아이템 추가
+                let item = markets.map {
+                    HomeCoinRow(market: $0, ticker: CoinTicker(code: "", highPrice: 0, lowPrice: 0, tradePrice: 0, accTradePrice: 0))
+                }
+                homeTickers.append(contentsOf: item)
             }
-            .store(in: &cancellables)
+            .store(in: &cancellable)
     }
+    
     
     
 }

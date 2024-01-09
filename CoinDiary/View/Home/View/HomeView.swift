@@ -39,12 +39,12 @@ struct HomeView: View {
                 
                 LazyVStack(spacing: 0, pinnedViews: [.sectionHeaders]) {
                     Section(header: HomeHeaderView()) {
-                        ForEach(viewModel.markets, id: \.market) { item in
+                        ForEach(viewModel.homeTickers, id: \.market) { item in
                             // frame 을 지정해둬야 보이는 영역의 ImageView 만 이미지 로드 함
 
                             HomeRowView(item: item)
                                 .frame(maxWidth: .infinity)
-                                .background(.white)
+                                .background(.white)                                
                         }
                     }
                 }
@@ -61,9 +61,9 @@ struct HomeView: View {
 //            .edgesIgnoringSafeArea(.top) // 상단 safeArea 영역 무시하기
 
         }
-        .task {
-            viewModel.fetchAllMarket()
-        }
+//        .task {
+//            viewModel.fetchAllMarket()
+//        }
         .navigationViewStyle(StackNavigationViewStyle())
         
     }

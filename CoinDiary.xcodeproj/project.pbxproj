@@ -13,6 +13,10 @@
 		C0D6BF3B2B4C573100585540 /* UpbitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6BF3A2B4C573100585540 /* UpbitAPI.swift */; };
 		C0D6BF3E2B4C575D00585540 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6BF3D2B4C575D00585540 /* Market.swift */; };
 		C0D6BF412B4C57D700585540 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6BF402B4C57D700585540 /* HomeViewModel.swift */; };
+		C0D6BF442B4C6C1100585540 /* WebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6BF432B4C6C1100585540 /* WebSocketManager.swift */; };
+		C0D6BF462B4C6E9600585540 /* CoinTicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6BF452B4C6E9600585540 /* CoinTicker.swift */; };
+		C0D6BF482B4D076B00585540 /* HomeCoinRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6BF472B4D076B00585540 /* HomeCoinRow.swift */; };
+		C0D6BF4A2B4D0B5900585540 /* RequestTicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6BF492B4D0B5900585540 /* RequestTicker.swift */; };
 		C0F690772B4C323B009808AB /* CoinDiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F690762B4C323B009808AB /* CoinDiaryApp.swift */; };
 		C0F6907B2B4C323D009808AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0F6907A2B4C323D009808AB /* Assets.xcassets */; };
 		C0F6907E2B4C323D009808AB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0F6907D2B4C323D009808AB /* Preview Assets.xcassets */; };
@@ -28,6 +32,10 @@
 		C0D6BF3A2B4C573100585540 /* UpbitAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpbitAPI.swift; sourceTree = "<group>"; };
 		C0D6BF3D2B4C575D00585540 /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		C0D6BF402B4C57D700585540 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		C0D6BF432B4C6C1100585540 /* WebSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketManager.swift; sourceTree = "<group>"; };
+		C0D6BF452B4C6E9600585540 /* CoinTicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinTicker.swift; sourceTree = "<group>"; };
+		C0D6BF472B4D076B00585540 /* HomeCoinRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoinRow.swift; sourceTree = "<group>"; };
+		C0D6BF492B4D0B5900585540 /* RequestTicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTicker.swift; sourceTree = "<group>"; };
 		C0F690732B4C323B009808AB /* CoinDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0F690762B4C323B009808AB /* CoinDiaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDiaryApp.swift; sourceTree = "<group>"; };
 		C0F6907A2B4C323D009808AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,6 +76,9 @@
 			isa = PBXGroup;
 			children = (
 				C0D6BF3D2B4C575D00585540 /* Market.swift */,
+				C0D6BF452B4C6E9600585540 /* CoinTicker.swift */,
+				C0D6BF472B4D076B00585540 /* HomeCoinRow.swift */,
+				C0D6BF492B4D0B5900585540 /* RequestTicker.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -85,6 +96,7 @@
 		C0D6BF422B4C685700585540 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C0D6BF432B4C6C1100585540 /* WebSocketManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -227,12 +239,16 @@
 			files = (
 				C0D6BF332B4C45FA00585540 /* HomeHeaderView.swift in Sources */,
 				C0D6BF362B4C499D00585540 /* UIApplication+Extension.swift in Sources */,
+				C0D6BF482B4D076B00585540 /* HomeCoinRow.swift in Sources */,
+				C0D6BF462B4C6E9600585540 /* CoinTicker.swift in Sources */,
 				C0F6908C2B4C39DE009808AB /* MyView.swift in Sources */,
 				C0D6BF412B4C57D700585540 /* HomeViewModel.swift in Sources */,
 				C0F6908A2B4C364A009808AB /* HomeView.swift in Sources */,
+				C0D6BF4A2B4D0B5900585540 /* RequestTicker.swift in Sources */,
 				C0F690862B4C3313009808AB /* CoinDiaryTabView.swift in Sources */,
 				C0F690772B4C323B009808AB /* CoinDiaryApp.swift in Sources */,
 				C0D6BF312B4C3EC000585540 /* HomeRowView.swift in Sources */,
+				C0D6BF442B4C6C1100585540 /* WebSocketManager.swift in Sources */,
 				C0D6BF3B2B4C573100585540 /* UpbitAPI.swift in Sources */,
 				C0D6BF3E2B4C575D00585540 /* Market.swift in Sources */,
 			);
