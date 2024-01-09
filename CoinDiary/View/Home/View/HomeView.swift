@@ -67,6 +67,7 @@ struct HomeView: View {
                         }
                     }
                 }
+                .background(Color(.systemGray6))
             }
             .onAppear {
                 print("onAppear")
@@ -79,7 +80,8 @@ struct HomeView: View {
             }
             .overlay(
                 Rectangle()
-                    .foregroundStyle(Color(uiColor: .white))
+//                    .foregroundStyle(Color(uiColor: .white))
+                    .foregroundStyle(Color(uiColor: .systemGray6))
                     .frame(height: UIApplication.shared.currentUIWindow()?.safeAreaInsets.top)
                     .edgesIgnoringSafeArea(.all)
                     .opacity(offsetY > -headerMinHeight ? 0 : 1)

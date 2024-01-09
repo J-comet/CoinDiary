@@ -10,6 +10,8 @@
 		C0CA7FA32B4D8E1F000C68D7 /* DetailCoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CA7FA22B4D8E1F000C68D7 /* DetailCoinView.swift */; };
 		C0CA7FA62B4DAC59000C68D7 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CA7FA52B4DAC59000C68D7 /* DetailViewModel.swift */; };
 		C0CA7FA92B4DB092000C68D7 /* NavigationBarBackButtonTitleHiddenModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CA7FA82B4DB092000C68D7 /* NavigationBarBackButtonTitleHiddenModifier.swift */; };
+		C0D52B022B4DCA2300521373 /* DetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D52B012B4DCA2300521373 /* DetailInfo.swift */; };
+		C0D52B042B4DCD6D00521373 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D52B032B4DCD6D00521373 /* Color+Extension.swift */; };
 		C0D6BF312B4C3EC000585540 /* HomeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6BF302B4C3EC000585540 /* HomeRowView.swift */; };
 		C0D6BF332B4C45FA00585540 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6BF322B4C45FA00585540 /* HomeHeaderView.swift */; };
 		C0D6BF362B4C499D00585540 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6BF352B4C499D00585540 /* UIApplication+Extension.swift */; };
@@ -33,6 +35,8 @@
 		C0CA7FA42B4D9577000C68D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C0CA7FA52B4DAC59000C68D7 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		C0CA7FA82B4DB092000C68D7 /* NavigationBarBackButtonTitleHiddenModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarBackButtonTitleHiddenModifier.swift; sourceTree = "<group>"; };
+		C0D52B012B4DCA2300521373 /* DetailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfo.swift; sourceTree = "<group>"; };
+		C0D52B032B4DCD6D00521373 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		C0D6BF302B4C3EC000585540 /* HomeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRowView.swift; sourceTree = "<group>"; };
 		C0D6BF322B4C45FA00585540 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		C0D6BF352B4C499D00585540 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				C0D6BF352B4C499D00585540 /* UIApplication+Extension.swift */,
+				C0D52B032B4DCD6D00521373 /* Color+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -103,6 +108,7 @@
 				C0D6BF452B4C6E9600585540 /* CoinTicker.swift */,
 				C0D6BF472B4D076B00585540 /* HomeCoinRow.swift */,
 				C0D6BF492B4D0B5900585540 /* RequestTicker.swift */,
+				C0D52B012B4DCA2300521373 /* DetailInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -270,8 +276,10 @@
 				C0CA7FA32B4D8E1F000C68D7 /* DetailCoinView.swift in Sources */,
 				C0D6BF462B4C6E9600585540 /* CoinTicker.swift in Sources */,
 				C0CA7FA92B4DB092000C68D7 /* NavigationBarBackButtonTitleHiddenModifier.swift in Sources */,
+				C0D52B022B4DCA2300521373 /* DetailInfo.swift in Sources */,
 				C0F6908C2B4C39DE009808AB /* MyView.swift in Sources */,
 				C0D6BF412B4C57D700585540 /* HomeViewModel.swift in Sources */,
+				C0D52B042B4DCD6D00521373 /* Color+Extension.swift in Sources */,
 				C0F6908A2B4C364A009808AB /* HomeView.swift in Sources */,
 				C0D6BF4A2B4D0B5900585540 /* RequestTicker.swift in Sources */,
 				C0F690862B4C3313009808AB /* CoinDiaryTabView.swift in Sources */,

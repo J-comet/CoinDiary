@@ -27,9 +27,12 @@ final class HomeViewModel: ObservableObject {
                 guard let market = markets.filter({ $0.market == ticker.code }).first else { return }
                 let newItem = HomeCoinRow(market: market, ticker: ticker)
                 
-                if let index = homeTickers.firstIndex(where: { $0.market.market == ticker.code }) {                    
+                if let index = homeTickers
+                    .firstIndex(where: { $0.market.market == ticker.code }) {
                     homeTickers[index] = newItem
                 }
+                                
+                homeTickers = homeTickers.sorted { $0.ticker.tradePrice > $1.ticker.tradePrice }
             }
             .store(in: &cancellable)
     }
@@ -56,7 +59,10 @@ final class HomeViewModel: ObservableObject {
                 
                 // 처음 실행시 모든 아이템 추가
                 let item = markets.map {
-                    HomeCoinRow(market: $0, ticker: CoinTicker(code: "", highPrice: 0, lowPrice: 0, tradePrice: 0, accTradePrice: 0, timestamp: 0))
+                    HomeCoinRow(
+                        market: $0,
+                        ticker: CoinTicker.EmptyTicker()
+                    )
                 }
                 homeTickers.append(contentsOf: item)
             }

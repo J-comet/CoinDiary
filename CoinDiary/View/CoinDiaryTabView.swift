@@ -18,7 +18,7 @@ struct CoinDiaryTabView: View {
                 .tabItem { Image(systemName: "house") }
                 .tag(TabType.home)
             MyView()
-                .tabItem { Image(systemName: "person.fill") }
+                .tabItem { Image(systemName: "square.and.pencil") }
                 .tag(TabType.my)
         }
         // 위젯 관련
