@@ -29,12 +29,12 @@ struct HomeRowView: View {
                     }
                     .frame(width: geometry.size.width / 2.5)
                     
-                    Text("\(item.ticker.tradePrice)")
+                    Text("\(item.ticker.tradePriceValue)")
                         .font(.subheadline)
                         .foregroundStyle(.gray)
                         .frame(width: geometry.size.width / 3.75)
                     
-                    Text("\(item.ticker.accTradePrice)")
+                    Text("\(item.ticker.accTradePriceValue)")
                         .font(.subheadline)
                         .foregroundStyle(.gray)
                         .frame(width: geometry.size.width / 3.75)

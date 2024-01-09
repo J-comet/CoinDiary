@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
-    private let headerMinHeight: CGFloat = 240
+    private let headerMinHeight: CGFloat = 140
     
     @StateObject var viewModel = HomeViewModel()
     

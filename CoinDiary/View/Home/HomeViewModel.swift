@@ -46,9 +46,11 @@ final class HomeViewModel: ObservableObject {
                 guard let self else { return }            
                 self.markets = markets
                 let marketCodes = markets.map { $0.market }
-                let testCode = Array(marketCodes[0..<10])
+//                let testCode = Array(marketCodes[0..<10])
 //                WebSocketManager.shared.send(marketCodes: testCode)
-                WebSocketManager.shared.send(marketCodes: marketCodes)
+                
+                let krwCodes = marketCodes.filter { $0.contains("KRW") }
+                WebSocketManager.shared.send(marketCodes: krwCodes)
                 
                 // 처음 실행시 모든 아이템 추가
                 let item = markets.map {
