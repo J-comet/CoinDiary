@@ -30,14 +30,12 @@ final class WebSocketManager: NSObject {
     var coinTickerSbj = PassthroughSubject<CoinTicker, Never>()
     
     func openWebSocket() {
-        if !isOpen {
             if let url = URL(string: "wss://api.upbit.com/websocket/v1") {
                 let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
                 webSocket = session.webSocketTask(with: url)
                 webSocket?.resume()
                 ping()
             }
-        }
     }
     
     func closeWebSocket() {

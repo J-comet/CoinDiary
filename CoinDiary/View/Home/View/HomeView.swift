@@ -9,6 +9,9 @@ import SwiftUI
 
 struct HomeView: View {
     
+    // 앱 생명주기
+    @Environment(\.scenePhase) var scenePhase
+    
     private let headerMinHeight: CGFloat = 140
     
     @StateObject var viewModel = HomeViewModel()
@@ -56,7 +59,23 @@ struct HomeView: View {
                     .edgesIgnoringSafeArea(.all)
                     .opacity(offsetY > -headerMinHeight ? 0 : 1)
                 , alignment: .top
-            )            
+            )
+            // 앱생명주기에 따라 웹소켓 상태제어
+            .onChange(of: scenePhase) { oldValue, newValue in
+                switch newValue {
+                case .active:
+                    WebSocketManager.shared.openWebSocket()
+                    viewModel.fetchAllMarket()
+                    print("active")
+                case .inactive:
+                    print("inactive")
+                case .background:
+                    print("background")
+                    WebSocketManager.shared.closeWebSocket()
+                @unknown default:
+                    print("error")
+                }
+            }
 //                        .clipped()   // 상단 safeArea 영역 침범하지 않고 스티키 헤더 사용할 때
 //            .edgesIgnoringSafeArea(.top) // 상단 safeArea 영역 무시하기
 

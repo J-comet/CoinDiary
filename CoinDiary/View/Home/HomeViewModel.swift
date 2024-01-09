@@ -17,8 +17,8 @@ final class HomeViewModel: ObservableObject {
     @Published var homeTickers: [HomeCoinRow] = []
     
     init() {
-        WebSocketManager.shared.openWebSocket()
-        fetchAllMarket()
+//        WebSocketManager.shared.openWebSocket()
+//        fetchAllMarket()
         
         WebSocketManager.shared.coinTickerSbj
             .receive(on: DispatchQueue.main)
