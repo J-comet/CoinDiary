@@ -17,7 +17,8 @@ struct HomeHeaderView: View {
                     
                     Text("코인명")
                         .font(.subheadline)
-                        .foregroundStyle(.gray)                    .frame(width: geometry.size.width / 2.5, alignment: .leading)
+                        .foregroundStyle(.gray)                    
+                        .frame(width: geometry.size.width / 2.5, alignment: .leading)
                     
                     Text("현재가")
                         .font(.subheadline)
@@ -38,7 +39,7 @@ struct HomeHeaderView: View {
         
     }
 }
-    
-    #Preview {
-        HomeHeaderView()
-    }
+
+#Preview {
+    HomeHeaderView()
+}

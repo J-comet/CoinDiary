@@ -10,7 +10,7 @@ import Combine
 
 final class HomeViewModel: ObservableObject {
     
-    var cancellable = Set<AnyCancellable>()
+    private var cancellable = Set<AnyCancellable>()
     
     private var markets: [Market] = []
     
@@ -46,7 +46,9 @@ final class HomeViewModel: ObservableObject {
                 guard let self else { return }            
                 self.markets = markets
                 let marketCodes = markets.map { $0.market }
-//                let testCode = Array(marketCodes[0..<10])
+                
+//                let testCode = Array(marketCodes[0..<1])
+//                let krwCodes = marketCodes.filter { $0.contains("KRW") }
 //                WebSocketManager.shared.send(marketCodes: testCode)
                 
                 let krwCodes = marketCodes.filter { $0.contains("KRW") }
@@ -54,7 +56,7 @@ final class HomeViewModel: ObservableObject {
                 
                 // 처음 실행시 모든 아이템 추가
                 let item = markets.map {
-                    HomeCoinRow(market: $0, ticker: CoinTicker(code: "", highPrice: 0, lowPrice: 0, tradePrice: 0, accTradePrice: 0))
+                    HomeCoinRow(market: $0, ticker: CoinTicker(code: "", highPrice: 0, lowPrice: 0, tradePrice: 0, accTradePrice: 0, timestamp: 0))
                 }
                 homeTickers.append(contentsOf: item)
             }

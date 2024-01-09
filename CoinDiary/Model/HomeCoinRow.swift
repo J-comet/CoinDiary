@@ -9,5 +9,5 @@ import Foundation
 
 struct HomeCoinRow {
     var market: Market
-    var ticker: CoinTicker = CoinTicker(code: "", highPrice: 0, lowPrice: 0, tradePrice: 0, accTradePrice: 0)
+    var ticker: CoinTicker = CoinTicker(code: "", highPrice: 0, lowPrice: 0, tradePrice: 0, accTradePrice: 0, timestamp: 0)
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0CA7FA32B4D8E1F000C68D7 /* DetailCoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CA7FA22B4D8E1F000C68D7 /* DetailCoinView.swift */; };
+		C0CA7FA62B4DAC59000C68D7 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CA7FA52B4DAC59000C68D7 /* DetailViewModel.swift */; };
+		C0CA7FA92B4DB092000C68D7 /* NavigationBarBackButtonTitleHiddenModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CA7FA82B4DB092000C68D7 /* NavigationBarBackButtonTitleHiddenModifier.swift */; };
 		C0D6BF312B4C3EC000585540 /* HomeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6BF302B4C3EC000585540 /* HomeRowView.swift */; };
 		C0D6BF332B4C45FA00585540 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6BF322B4C45FA00585540 /* HomeHeaderView.swift */; };
 		C0D6BF362B4C499D00585540 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6BF352B4C499D00585540 /* UIApplication+Extension.swift */; };
@@ -26,6 +29,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C0CA7FA22B4D8E1F000C68D7 /* DetailCoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCoinView.swift; sourceTree = "<group>"; };
+		C0CA7FA42B4D9577000C68D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C0CA7FA52B4DAC59000C68D7 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		C0CA7FA82B4DB092000C68D7 /* NavigationBarBackButtonTitleHiddenModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarBackButtonTitleHiddenModifier.swift; sourceTree = "<group>"; };
 		C0D6BF302B4C3EC000585540 /* HomeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRowView.swift; sourceTree = "<group>"; };
 		C0D6BF322B4C45FA00585540 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		C0D6BF352B4C499D00585540 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
@@ -56,6 +63,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C0CA7FA12B4D8DF5000C68D7 /* DetailCoin */ = {
+			isa = PBXGroup;
+			children = (
+				C0CA7FA22B4D8E1F000C68D7 /* DetailCoinView.swift */,
+				C0CA7FA52B4DAC59000C68D7 /* DetailViewModel.swift */,
+			);
+			path = DetailCoin;
+			sourceTree = "<group>";
+		};
+		C0CA7FA72B4DB077000C68D7 /* ViewModifier */ = {
+			isa = PBXGroup;
+			children = (
+				C0CA7FA82B4DB092000C68D7 /* NavigationBarBackButtonTitleHiddenModifier.swift */,
+			);
+			path = ViewModifier;
+			sourceTree = "<group>";
+		};
 		C0D6BF342B4C499100585540 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,14 +144,16 @@
 		C0F690752B4C323B009808AB /* CoinDiary */ = {
 			isa = PBXGroup;
 			children = (
-				C0D6BF422B4C685700585540 /* Utils */,
+				C0CA7FA42B4D9577000C68D7 /* Info.plist */,
 				C0F690762B4C323B009808AB /* CoinDiaryApp.swift */,
 				C0F6907A2B4C323D009808AB /* Assets.xcassets */,
 				C0D6BF392B4C571700585540 /* API */,
 				C0D6BF342B4C499100585540 /* Extension */,
 				C0D6BF3C2B4C575700585540 /* Model */,
 				C0F6907C2B4C323D009808AB /* Preview Content */,
+				C0D6BF422B4C685700585540 /* Utils */,
 				C0F690842B4C3300009808AB /* View */,
+				C0CA7FA72B4DB077000C68D7 /* ViewModifier */,
 			);
 			path = CoinDiary;
 			sourceTree = "<group>";
@@ -143,6 +169,7 @@
 		C0F690842B4C3300009808AB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C0CA7FA12B4D8DF5000C68D7 /* DetailCoin */,
 				C0F690882B4C363C009808AB /* My */,
 				C0F690872B4C3635009808AB /* Home */,
 				C0F690852B4C3313009808AB /* CoinDiaryTabView.swift */,
@@ -240,7 +267,9 @@
 				C0D6BF332B4C45FA00585540 /* HomeHeaderView.swift in Sources */,
 				C0D6BF362B4C499D00585540 /* UIApplication+Extension.swift in Sources */,
 				C0D6BF482B4D076B00585540 /* HomeCoinRow.swift in Sources */,
+				C0CA7FA32B4D8E1F000C68D7 /* DetailCoinView.swift in Sources */,
 				C0D6BF462B4C6E9600585540 /* CoinTicker.swift in Sources */,
+				C0CA7FA92B4DB092000C68D7 /* NavigationBarBackButtonTitleHiddenModifier.swift in Sources */,
 				C0F6908C2B4C39DE009808AB /* MyView.swift in Sources */,
 				C0D6BF412B4C57D700585540 /* HomeViewModel.swift in Sources */,
 				C0F6908A2B4C364A009808AB /* HomeView.swift in Sources */,
@@ -251,6 +280,7 @@
 				C0D6BF442B4C6C1100585540 /* WebSocketManager.swift in Sources */,
 				C0D6BF3B2B4C573100585540 /* UpbitAPI.swift in Sources */,
 				C0D6BF3E2B4C575D00585540 /* Market.swift in Sources */,
+				C0CA7FA62B4DAC59000C68D7 /* DetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,11 +417,13 @@
 				DEVELOPMENT_TEAM = SV3K237PCX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CoinDiary/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -416,11 +448,13 @@
 				DEVELOPMENT_TEAM = SV3K237PCX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CoinDiary/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

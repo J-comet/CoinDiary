@@ -30,12 +30,13 @@ final class WebSocketManager: NSObject {
     var coinTickerSbj = PassthroughSubject<CoinTicker, Never>()
     
     func openWebSocket() {
-            if let url = URL(string: "wss://api.upbit.com/websocket/v1") {
-                let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
-                webSocket = session.webSocketTask(with: url)
-                webSocket?.resume()
-                ping()
-            }
+        if let url = URL(string: "wss://api.upbit.com/websocket/v1") {
+            let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
+            webSocket = session.webSocketTask(with: url)
+            webSocket?.resume()
+            ping()
+        }
+        
     }
     
     func closeWebSocket() {
@@ -55,8 +56,7 @@ final class WebSocketManager: NSObject {
         let strCodeDict = String(describing: codeDict).dropFirst().dropLast()
         print("result = ", strCodeDict)
         
-        // Test Data
-        let tickerTestData = """
+        let tickerData = """
       [
         {
           "ticket": "test example"
@@ -71,11 +71,11 @@ final class WebSocketManager: NSObject {
       ]
 """
         
-//        let jsonData = try! JSONEncoder().encode(request)
-//        let jsonString = String(data: jsonData, encoding: .utf8)!
-//        print("jsonString = ", jsonString)
-                
-        webSocket?.send(.string(tickerTestData), completionHandler: { error in
+        //        let jsonData = try! JSONEncoder().encode(request)
+        //        let jsonString = String(data: jsonData, encoding: .utf8)!
+        //        print("jsonString = ", jsonString)
+        
+        webSocket?.send(.string(tickerData), completionHandler: { error in
             if let error {
                 print("send error = \(error.localizedDescription)")
             }
@@ -87,11 +87,11 @@ final class WebSocketManager: NSObject {
             webSocket?.receive(completionHandler: { [weak self] result in
                 switch result {
                 case .success(let success):
-//                    print("success = ", success)
+                    //                    print("success = ", success)
                     switch success {
                     case .data(let data):
                         if let decodedData = try? JSONDecoder().decode(CoinTicker.self, from: data) {
-                            print("receive = ", decodedData)
+                            print("receive = ", decodedData.timestamp)
                             // RxSwift onNext vs Combine send
                             self?.coinTickerSbj.send(decodedData)
                         }

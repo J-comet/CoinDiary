@@ -35,5 +35,4 @@ struct UpbitAPI {
             .eraseToAnyPublisher()
     }
     
-    
 }
