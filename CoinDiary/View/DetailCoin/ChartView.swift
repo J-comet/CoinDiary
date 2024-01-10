@@ -24,6 +24,11 @@ struct ChartView: View {
     var maxVal: Double
     
     var body: some View {
+        
+        let yScaleMax = chartCoins.max { item1, item2 in
+            return item2.value > item1.value
+        }?.value ?? 0
+        
         Chart {
             
             //            RuleMark(y: .value("시중가", 300000))
@@ -37,6 +42,7 @@ struct ChartView: View {
             
             ForEach(chartCoins, id:\.self) { item in
                 LineMark(
+//                    x: .value("Date", item.date, unit: .minute),
                     x: .value("Date", item.date),
                     y: .value("Value", item.value)
                 )
@@ -44,6 +50,9 @@ struct ChartView: View {
             }
             .foregroundStyle(.pink.gradient)
         }
+        .frame(height: UIScreen.main.bounds.height * 0.45)
+        .padding(4)
+//        .chartYScale(domain: 0...(yScaleMax + 5000))
         .chartYAxis {
             AxisMarks(
                 preset: .extended,

@@ -39,8 +39,11 @@ struct DetailCoinView: View {
                         minVal: $viewModel.minChart,
                         maxVal: $viewModel.maxChart
                     )
-                    .frame(height: UIScreen.main.bounds.height * 0.45)
-                    .padding(.top, 16)
+                    .background {
+                        RoundedRectangle(cornerRadius: 10, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+                            .fill(.white.shadow(.drop(radius: 2)))
+                    }
+                    .padding(.init(top: 16, leading: 8, bottom: 0, trailing: 8))
                     
                     HStack {
                         
