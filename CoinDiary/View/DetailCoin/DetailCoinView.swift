@@ -9,11 +9,14 @@ import SwiftUI
 
 struct DetailCoinView: View {
     
+    // 앱 생명주기
+    @Environment(\.scenePhase) var scenePhase
+    
     @StateObject
-    var viewModel: DetailViewModel
+    var viewModel: DetailCoinViewModel
     
     init(coin: HomeCoinRow) {
-        _viewModel = StateObject(wrappedValue: DetailViewModel(coin: coin))
+        _viewModel = StateObject(wrappedValue: DetailCoinViewModel(coin: coin))
     }
     
     private let columns: [GridItem] = [
@@ -117,11 +120,37 @@ struct DetailCoinView: View {
             .navigationTitle(viewModel.coin.market.korean)
             .navigationBarBackButtonTitleHidden()
         }
-        
-        
-        
-        
-        
+//        .task {
+//            print("HomeView Task")
+//            WebSocketManager.shared.openWebSocket()
+//            viewModel.fetchMarket()
+//        }
+        .lifeCycle(handler: viewModel)
+        .onChange(of: scenePhase) { oldValue, newValue in
+            switch newValue {
+            case .active:
+                WebSocketManager.shared.openWebSocket()
+                viewModel.fetchMarket()
+                print("active")
+            case .inactive:
+                print("inactive")
+            case .background:
+                print("background")
+                WebSocketManager.shared.closeWebSocket()
+            @unknown default:
+                print("error")
+            }
+        }
+//        .onAppear {
+//            print("DetailCoinView onAppear")
+////            WebSocketManager.shared.openWebSocket()
+//            viewModel.fetchMarket()
+//        }
+//        .onDisappear {
+//            print("DetailCoinView onDisappear")
+//            // 뒤로 갔을 때 메인화면에서도 웹소켓을 계속 진행할거라 주석처리
+////            WebSocketManager.shared.closeWebSocket()
+//        }
     }
 }
 

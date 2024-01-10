@@ -13,6 +13,14 @@ struct CoinDiaryApp: App {
     var body: some Scene {
         WindowGroup {
             CoinDiaryTabView()
+//                .onAppear {
+//                    print("ContentView onAppear")
+//                    WebSocketManager.shared.openWebSocket()
+//                }
+//                .onDisappear {
+//                    print("ContentView onDisappear")
+//                    WebSocketManager.shared.closeWebSocket()
+//                }
         }
 //        .onChange(of: scenePhase) { newScenePhase in
 //            switch newScenePhase {

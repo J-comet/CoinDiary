@@ -21,6 +21,8 @@ final class WebSocketManager: NSObject {
     
     private var isOpen = false
     
+    private var tryCount = 0 // 연결 실패시 횟수
+    private let maxTryCount = 3  // 최대 연결 재시도 횟수
     
     /**
      1. RxSwift PublishSubject vs Combine PassthroughSubject
@@ -30,13 +32,15 @@ final class WebSocketManager: NSObject {
     var coinTickerSbj = PassthroughSubject<CoinTicker, Never>()
     
     func openWebSocket() {
-        if let url = URL(string: "wss://api.upbit.com/websocket/v1") {
-            let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
-            webSocket = session.webSocketTask(with: url)
-            webSocket?.resume()
-            ping()
-        }
-        
+//        closeWebSocket()
+//        if isOpen == false {
+            if let url = URL(string: "wss://api.upbit.com/websocket/v1") {
+                let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
+                webSocket = session.webSocketTask(with: url)
+                webSocket?.resume()
+                ping()
+            }
+//        }
     }
     
     func closeWebSocket() {
@@ -85,15 +89,18 @@ final class WebSocketManager: NSObject {
     func receive() {
         if isOpen {
             webSocket?.receive(completionHandler: { [weak self] result in
+                guard let self else { return }
                 switch result {
                 case .success(let success):
-                    //                    print("success = ", success)
+                    
+                    self.tryCount = 0  // 성공했을 시 재시도 횟수 초기화
+                    
                     switch success {
                     case .data(let data):
                         if let decodedData = try? JSONDecoder().decode(CoinTicker.self, from: data) {
                             print("receive = ", decodedData.timestamp)
                             // RxSwift onNext vs Combine send
-                            self?.coinTickerSbj.send(decodedData)
+                            self.coinTickerSbj.send(decodedData)
                         }
                     case .string(let string):
                         print(string)
@@ -103,10 +110,21 @@ final class WebSocketManager: NSObject {
                     
                 case .failure(let failure):
                     print("failure = ", failure)
-                    self?.closeWebSocket()
+                    self.closeWebSocket()
+                    
+//                    self.tryCount += 1
+//                    
+//                    print("재시도 횟수 = \(tryCount)")
+//                    
+//                    if maxTryCount <= tryCount {
+//                        self.closeWebSocket()
+//                    } else {
+//                        // 재시도?
+//                        self.openWebSocket()
+//                    }
                 }
                 
-                self?.receive()  // 재귀방식으로 receive 해두어야 지속적으로 통신 가능
+                self.receive()  // 재귀방식으로 receive 해두어야 지속적으로 통신 가능
             })
         }
     }
