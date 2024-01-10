@@ -98,7 +98,7 @@ final class WebSocketManager: NSObject {
                     switch success {
                     case .data(let data):
                         if let decodedData = try? JSONDecoder().decode(CoinTicker.self, from: data) {
-                            print("receive = ", decodedData.timestamp)
+                            print("receive = ", decodedData.timestampToDate)
                             // RxSwift onNext vs Combine send
                             self.coinTickerSbj.send(decodedData)
                         }

@@ -17,9 +17,20 @@ extension DetailCoinView {
         private var cancellables = Set<AnyCancellable>()
         //    let coin: HomeCoinRow
         
-        @Published var coin: HomeCoinRow
+        @Published 
+        var coin: HomeCoinRow
         
-        @Published var detailInfos: [DetailInfo] = []   // 상세 메뉴
+        @Published 
+        var detailInfos: [DetailInfo] = []   // 상세 메뉴
+        
+        @Published
+        var chartCoins: [ChartCoin] = []
+        
+        @Published 
+        var minChart: Double = 0.0
+        
+        @Published
+        var maxChart: Double = 0.0
         
         deinit {
             print("DetailViewModel DeInit")
@@ -31,7 +42,7 @@ extension DetailCoinView {
             print("DetailViewModel Init", coin)
             bind()
             
-            initDetailInfos()
+            updateDetailInfos()
 //            WebSocketManager.shared.openWebSocket()
         }
         
@@ -52,14 +63,20 @@ extension DetailCoinView {
                 fetchMarket()
                 return
             case .viewDidAppear:
-                print("1234")
-                
                 
                 WebSocketManager.shared.coinTickerSbj
                     .receive(on: DispatchQueue.main)
                     .sink { [weak self] ticker in
                         guard let self else { return }
-                        self.coin = HomeCoinRow(market: coin.market, ticker: ticker)
+                        if self.coin.market.market == ticker.code {
+                            self.coin = HomeCoinRow(market: coin.market, ticker: ticker)
+                            self.chartCoins.append(ChartCoin(date: .now, value: ticker.tradePrice))
+                            
+                            self.minChart = chartCoins.map { $0.value }.sorted().first ?? 0
+                            self.maxChart = chartCoins.map { $0.value }.sorted().last ?? 0
+                            
+                            updateDetailInfos()
+                        }
                     }
                     .store(in: &cancellables)
                 return
@@ -74,7 +91,10 @@ extension DetailCoinView {
             WebSocketManager.shared.send(marketCodes: [coin.market.market])
         }
         
-        private func initDetailInfos() {
+        private func updateDetailInfos() {
+            
+            detailInfos = []
+            
             let high = DetailInfo(
                 title: "현재 고가",
                 value: coin.ticker.highPriceValue,
@@ -87,17 +107,19 @@ extension DetailCoinView {
             )
             let volume24 = DetailInfo(
                 title: "누적 거래량(24시)",
-                value: "\(coin.ticker.accTradeVolume24h)"
+                value: coin.ticker.accTradePrice24hValue
             )
             let price24 = DetailInfo(
                 title: "누적 거래대금(24시)",
                 value: coin.ticker.lowPriceValue
             )
+
+//            _detailInfos.projectedValue.append(<#T##elements: [DetailInfo]...##[DetailInfo]#>)
             
-            self.detailInfos.append(high)
-            self.detailInfos.append(low)
-            self.detailInfos.append(volume24)
-            self.detailInfos.append(price24)
+            detailInfos.append(high)
+            detailInfos.append(low)
+            detailInfos.append(volume24)
+            detailInfos.append(price24)
         }
     }
 }

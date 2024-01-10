@@ -96,11 +96,10 @@ struct HomeView: View {
 //                // 상세화면에서도 웹소켓을 계속 진행할 예정이라 close 코드 제거
 ////                WebSocketManager.shared.closeWebSocket()
 //            }
-            .lifeCycle(handler: viewModel)
             .overlay(
                 Rectangle()
-//                    .foregroundStyle(Color(uiColor: .white))
-                    .foregroundStyle(Color(uiColor: .systemGray6))
+                    .foregroundStyle(Color(uiColor: .white))
+//                    .foregroundStyle(Color(uiColor: .systemGray6))
                     .frame(height: UIApplication.shared.currentUIWindow()?.safeAreaInsets.top)
                     .edgesIgnoringSafeArea(.all)
                     .opacity(offsetY > -headerMinHeight ? 0 : 1)
@@ -131,6 +130,7 @@ struct HomeView: View {
         //            viewModel.fetchAllMarket()
         //        }
         .navigationViewStyle(StackNavigationViewStyle())
+        .lifeCycle(handler: viewModel)
         
     }
     

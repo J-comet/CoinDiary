@@ -56,10 +56,13 @@ struct CoinTicker: Codable {
         let acc = accTradePrice / 1000000
         let convert = Int(round(acc))
         
-        return if convert < 1 {
-            "\(round(accTradePrice * 1000) / 1000)"
+        if convert < 1 {
+            return "\(round(accTradePrice * 1000) / 1000)"
         } else {
-            "\(convert)백만"
+            let numberFormatter: NumberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .decimal
+            let resultNum = numberFormatter.string(for: convert) ?? "0"
+            return "\(String(describing: resultNum))백만"
         }
     }
     
@@ -69,6 +72,18 @@ struct CoinTicker: Codable {
         dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
         print(dateFormatter.string(from: date))
         return dateFormatter.string(from: date)
+    }
+    
+    var accTradePrice24hValue: String {
+        return "\(round(accTradePrice24h * 10) / 10)"
+//        if accTradePrice24h < 1 {
+//            return "\(round(accTradePrice24h * 10) / 10)"
+//        } else {
+//            let numberFormatter: NumberFormatter = NumberFormatter()
+//            numberFormatter.numberStyle = .decimal
+//            let resultNum = numberFormatter.string(for: accTradePrice24h)
+//            return resultNum ?? "0"
+//        }
     }
     
     var isTradingDiscription: String {

@@ -33,9 +33,14 @@ struct DetailCoinView: View {
 
             ScrollView {
                 VStack(spacing: 20) {
-                    Text("차트 생길 곳")
-                        .frame(height: 400)
-                        .background(.yellow)
+                    
+                    ChartView(
+                        chartCoins: $viewModel.chartCoins,
+                        minVal: $viewModel.minChart,
+                        maxVal: $viewModel.maxChart
+                    )
+                    .frame(height: UIScreen.main.bounds.height * 0.45)
+                    .padding(.top, 16)
                     
                     HStack {
                         
@@ -73,6 +78,7 @@ struct DetailCoinView: View {
                         Spacer()
                         Spacer()
                     }
+                    .padding()
                     
                     Divider()
                     
@@ -96,7 +102,8 @@ struct DetailCoinView: View {
                         }
                         
                     })
-
+                    .padding()
+                    
                 }
                 .toolbar {
     //                ToolbarItemGroup(placement: .topBarLeading) {
@@ -114,7 +121,7 @@ struct DetailCoinView: View {
                         }
                     }
                 }
-                .padding()
+                
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(viewModel.coin.market.korean)
