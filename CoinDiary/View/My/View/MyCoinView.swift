@@ -43,10 +43,6 @@ struct MyCoinView: View {
                                                 .fill(.white.shadow(.drop(radius: 1)))
                                         }
                                         .padding(.horizontal, 8)
-                                        .onAppear {
-                                            print("북마크 코인뷰 onAppear")
-                                            viewModel.fetchMarket()
-                                        }
                                     
                                 }
                                 .buttonStyle(PlainButtonStyle())
@@ -54,6 +50,10 @@ struct MyCoinView: View {
                         })
                         .padding(.top, 16)
                         .padding(.bottom, 16)
+                    }
+                    .onAppear {
+                        print("MyCoinView - onAppear")
+                        viewModel.fetchMarket()
                     }
                 }
             }

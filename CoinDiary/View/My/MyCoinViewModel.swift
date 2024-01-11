@@ -26,6 +26,7 @@ extension MyCoinView {
         init() {
             print("MyCoinViewModel Init")
             bind()
+            fetchMarket()
         }
         
         private func bind() {
@@ -60,7 +61,7 @@ extension MyCoinView {
             case .viewDidLoad:
                 return
             case .viewWillAppaer:
-                fetchMarket()
+//                fetchMarket()
                 return
             case .viewDidAppear:
                 return
