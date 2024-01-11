@@ -11,17 +11,13 @@ import Charts
 
 struct ChartView: View {
     
-    @State
-    private var scrollPosition: Double = 0
+    @State private var scrollPosition: Double = 0
     
-    @Binding
-    var chartCoins: [ChartCoin]
+    @Binding var chartCoins: [ChartCoin]
     
-    @Binding
-    var minVal: Double
+    @Binding var minVal: Double
     
-    @Binding
-    var maxVal: Double
+    @Binding var maxVal: Double
     
     var body: some View {
         

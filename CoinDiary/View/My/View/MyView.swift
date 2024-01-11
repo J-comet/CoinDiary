@@ -12,8 +12,8 @@ import SwiftUI
  */
 struct MyView: View {
     
-    @State
-    private var bookmarkCoins: [BookmarkCoin] = [
+    
+    @State private var bookmarkCoins: [BookmarkCoin] = [
         BookmarkCoin(lang: "English"),
         BookmarkCoin(lang: "11111111"),
         BookmarkCoin(lang: "23232323"),

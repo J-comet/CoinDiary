@@ -28,6 +28,10 @@ extension HomeView {
         init() {
             print("HomeViewModel Init")
             bind()
+            // 처음 데이터 업데이트 사용
+            fetchAllMarket()
+            
+            // 뒤로가기후 업데이트하기위해 해당 View 의 onAppear() 메서드 내에 fetchAllMarket() 사용
         }
         
         private func bind() {
@@ -35,6 +39,22 @@ extension HomeView {
                 .sink(receiveValue: { [weak self] lifeCycle in
                     self?.lifeCycleHandling(lifeCycle)
                 })
+                .store(in: &cancellables)
+            
+            WebSocketManager.shared.coinTickerSbj
+                .receive(on: DispatchQueue.main)
+                .sink { [weak self] ticker in
+                    guard let self else { return }
+                    guard let market = markets.filter({ $0.market == ticker.code }).first else { return }
+                    let newItem = HomeCoinRow(market: market, ticker: ticker)
+                    
+                    if let index = homeTickers
+                        .firstIndex(where: { $0.market.market == ticker.code }) {
+                        homeTickers[index] = newItem
+                    }
+                                    
+                    homeTickers = homeTickers.sorted { $0.ticker.tradePrice > $1.ticker.tradePrice }
+                }
                 .store(in: &cancellables)
         }
         
@@ -45,26 +65,9 @@ extension HomeView {
                 return
             case .viewWillAppaer:
 //                WebSocketManager.shared.openWebSocket()
-                fetchAllMarket()
+//                fetchAllMarket()
                 return
             case .viewDidAppear:
-                print("1234")
-                
-                WebSocketManager.shared.coinTickerSbj
-                    .receive(on: DispatchQueue.main)
-                    .sink { [weak self] ticker in
-                        guard let self else { return }
-                        guard let market = markets.filter({ $0.market == ticker.code }).first else { return }
-                        let newItem = HomeCoinRow(market: market, ticker: ticker)
-                        
-                        if let index = homeTickers
-                            .firstIndex(where: { $0.market.market == ticker.code }) {
-                            homeTickers[index] = newItem
-                        }
-                                        
-                        homeTickers = homeTickers.sorted { $0.ticker.tradePrice > $1.ticker.tradePrice }
-                    }
-                    .store(in: &cancellables)
                 return
             case .viewWillDisappear:
                 return

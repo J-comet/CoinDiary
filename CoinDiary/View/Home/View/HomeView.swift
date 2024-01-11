@@ -96,6 +96,9 @@ struct HomeView: View {
             //                // 상세화면에서도 웹소켓을 계속 진행할 예정이라 close 코드 제거
             ////                WebSocketManager.shared.closeWebSocket()
             //            }
+            .onAppear(perform: {
+                viewModel.fetchAllMarket()
+            })
             .overlay(
                 Rectangle()
                     .foregroundStyle(Color(uiColor: .systemGray6))

@@ -12,8 +12,7 @@ struct DetailCoinView: View {
     // 앱 생명주기
     @Environment(\.scenePhase) var scenePhase
     
-    @StateObject
-    var viewModel: DetailCoinViewModel
+    @StateObject var viewModel: DetailCoinViewModel
     
     init(coin: HomeCoinRow) {
         _viewModel = StateObject(wrappedValue: DetailCoinViewModel(coin: coin))
