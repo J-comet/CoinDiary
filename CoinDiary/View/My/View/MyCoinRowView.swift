@@ -25,22 +25,28 @@ struct MyCoinRowView: View {
                     
                     Spacer()
                     
-                    Image(systemName: "bookmark.fill")
-                        .foregroundStyle(Color.init(hex: "1560bd"))
+//                    Image(systemName: "bookmark.fill")
+//                        .foregroundStyle(Color.init(hex: "1560bd"))
                 }
                 Spacer()
             }
             .padding(.horizontal, 12)
             
             VStack(alignment: .leading, spacing: 8) {
-                Text("전일 대비")
+                Text("전일 대비 등락율")
                     .font(.subheadline)
                     .padding(.horizontal, 12)
                 
                 HStack {
-                    Text("\(item.ticker.changePrice)")
+                    Image(systemName: item.ticker.coinChangeStatus.imageName)
+                        .frame(width: 16, height: 16)
+                        .foregroundStyle(Color(hex: item.ticker.coinChangeStatus.txtColor))
+                    
+                    Text("\(item.ticker.changeRateValue)")
                         .font(.title2)
                         .bold()
+                        .foregroundStyle(Color(hex: item.ticker.coinChangeStatus.txtColor))
+                    
                     Spacer()
                     Text("상세정보")
                         .font(.callout)

@@ -43,19 +43,23 @@ struct MyCoinView: View {
                                                 .fill(.white.shadow(.drop(radius: 1)))
                                         }
                                         .padding(.horizontal, 8)
+                                        .onAppear {
+                                            print("북마크 코인뷰 onAppear")
+                                            viewModel.fetchMarket()
+                                        }
                                     
                                 }
                                 .buttonStyle(PlainButtonStyle())
                             }
                         })
                         .padding(.top, 16)
+                        .padding(.bottom, 16)
                     }
                 }
             }
             .navigationTitle("관심 종목")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarColor(backgroundColor: .white, titleTextColor: .black)
-            .padding(.bottom, 1)
         }
         .lifeCycle(handler: viewModel)
     }

@@ -47,7 +47,7 @@ struct CoinTicker: Codable {
     let accTradeVolume24h: Double       // 24시간 누적 거래량
     let askBid: String                  // 매수/매도 구분
     let change: String                  // 전일대비 - RISE: 상승 / EVEN: 보합 / FALL: 하락
-    let changePrice: Double             // 부호없는 전일 대비 값
+    let changeRate: Double             // 부호없는 전일 등락율
     
     var highPriceValue: String {
         if highPrice < 1 {
@@ -136,6 +136,18 @@ struct CoinTicker: Codable {
         return status
     }
     
+    var changeRateValue: String {
+        if changeRate < 1 {
+            return "\(round(changeRate * 10000) / 10000)"
+        } else {
+            let numberFormatter: NumberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .decimal
+            let resultNum = numberFormatter.string(for: changeRate)
+            return resultNum ?? "0"
+        }
+    }
+
+    
     enum CodingKeys: String, CodingKey {
         case code
         case highPrice = "high_price"
@@ -148,7 +160,7 @@ struct CoinTicker: Codable {
         case accTradeVolume24h = "acc_trade_volume_24h"
         case askBid = "ask_bid"
         case change
-        case changePrice = "change_price"
+        case changeRate = "change_rate"
     }
 }
 
@@ -167,7 +179,7 @@ extension CoinTicker {
             accTradeVolume24h: 0,
             askBid: "BID",
             change: "EVEN",
-            changePrice: 0
+            changeRate: 0
         )
     }
     
