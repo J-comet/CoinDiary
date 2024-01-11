@@ -48,6 +48,8 @@
 - 재사용성을 고려해 ViewModifier 프로토콜을 채택한 CustomModifier 구현 
 - 관심종목의 북마크 데이터 동기화
 
+<br>
+
 ### 트러블슈팅
 - WebSocket 연결 및 해제 관리
   ...
