@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/**
+ 현재 사용 X
+ */
 struct MyView: View {
     
     @State

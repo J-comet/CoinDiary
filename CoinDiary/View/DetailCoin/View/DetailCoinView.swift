@@ -117,10 +117,18 @@ struct DetailCoinView: View {
     //                    }
     //                }
                     ToolbarItemGroup(placement: .topBarTrailing) {
-                        Button {
-                            print("클릭되었습니다!")
-                        } label: {
-                            Image(systemName: "bookmark")
+                        
+                        Image(
+                            systemName:
+                                viewModel.isBookmark ? "bookmark.fill" : "bookmark"
+                        )
+                        .foregroundColor(
+                            viewModel.isBookmark ? Color(hex: "1560bd") : Color(.lightGray)
+                        )
+                        .wrapToButton {
+                            // 현재 저장되어 있는지 체크 후 ADD or Remove 해주기
+                            viewModel.updateCoinBookmarkStatus()
+                            print("클릭")
                         }
                     }
                 }

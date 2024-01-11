@@ -7,6 +7,34 @@
 
 import Foundation
 
+enum CoinChangeStatus: String {
+    case rise = "RISE"
+    case even = "EVEN"
+    case fall = "FALL"
+    
+    var imageName: String {
+        return switch self {
+        case .rise:
+            "arrowtriangle.up.fill"
+        case .even:
+            ""
+        case .fall:
+            "arrowtriangle.down.fill"
+        }
+    }
+    
+    var txtColor: String {
+        return switch self {
+        case .rise:
+            "1560bd"
+        case .even:
+            "000000"
+        case .fall:
+            "ed2939"
+        }
+    }
+}
+
 struct CoinTicker: Codable {
     let code: String
     let highPrice: Double       // 고가
@@ -18,6 +46,8 @@ struct CoinTicker: Codable {
     let accTradePrice24h: Double        // 24시간 누적 거래대금
     let accTradeVolume24h: Double       // 24시간 누적 거래량
     let askBid: String                  // 매수/매도 구분
+    let change: String                  // 전일대비 - RISE: 상승 / EVEN: 보합 / FALL: 하락
+    let changePrice: Double             // 부호없는 전일 대비 값
     
     var highPriceValue: String {
         if highPrice < 1 {
@@ -99,6 +129,13 @@ struct CoinTicker: Codable {
         return askBid == "BID" ? true : false
     }
     
+    var coinChangeStatus: CoinChangeStatus {
+        guard let status = CoinChangeStatus(rawValue: change) else {
+            return .even
+        }
+        return status
+    }
+    
     enum CodingKeys: String, CodingKey {
         case code
         case highPrice = "high_price"
@@ -110,6 +147,8 @@ struct CoinTicker: Codable {
         case accTradePrice24h = "acc_trade_price_24h"
         case accTradeVolume24h = "acc_trade_volume_24h"
         case askBid = "ask_bid"
+        case change
+        case changePrice = "change_price"
     }
 }
 
@@ -126,7 +165,9 @@ extension CoinTicker {
             isTradingSuspended: true,
             accTradePrice24h: 0,
             accTradeVolume24h: 0,
-            askBid: "BID"
+            askBid: "BID",
+            change: "EVEN",
+            changePrice: 0
         )
     }
     

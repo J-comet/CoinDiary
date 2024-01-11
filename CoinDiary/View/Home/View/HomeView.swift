@@ -39,7 +39,7 @@ struct HomeView: View {
     
     @StateObject var viewModel = HomeViewModel()
     
-    @State private var offsetY: CGFloat = CGFloat.zero
+    @State private var offsetY: CGFloat = .zero
     
     var body: some View {
         

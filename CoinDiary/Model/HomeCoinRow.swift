@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HomeCoinRow {
+struct HomeCoinRow: Codable {
     var market: Market
-    var ticker: CoinTicker = CoinTicker.EmptyTicker()
+    var ticker: CoinTicker = CoinTicker.EmptyTicker()    
 }

@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct MyCoinRowView: View {
+    
+    let item: HomeCoinRow
+    
     var body: some View {
         VStack(alignment: .leading) {
             VStack {
                 Spacer()
                 HStack(spacing: 6) {
-                    Text("영어 코인명")
+                    Text(item.market.english)
                         .font(.callout)
                         .fontWeight(.bold)
                     
-                    Text("한글 코인명")
+                    Text(item.market.korean)
                         .font(.caption)
                     
                     Spacer()
@@ -30,12 +33,12 @@ struct MyCoinRowView: View {
             .padding(.horizontal, 12)
             
             VStack(alignment: .leading, spacing: 8) {
-                Text("현재가")
+                Text("전일 대비")
                     .font(.subheadline)
                     .padding(.horizontal, 12)
                 
                 HStack {
-                    Text("591,402,122,231,1223")
+                    Text("\(item.ticker.changePrice)")
                         .font(.title2)
                         .bold()
                     Spacer()
@@ -48,24 +51,29 @@ struct MyCoinRowView: View {
             }
             .frame(height: 100)
             .background(.white)
-            .clipShape(
-                .rect(
-                    topLeadingRadius: 0,
-                    bottomLeadingRadius: 8,
-                    bottomTrailingRadius: 8,
-                    topTrailingRadius: 0
-                )
-            )
+//            .clipShape(
+//                .rect(
+//                    topLeadingRadius: 0,
+//                    bottomLeadingRadius: 8,
+//                    bottomTrailingRadius: 8,
+//                    topTrailingRadius: 0
+//                )
+//            )
         }
         .frame(height: 150)
-        .background {
-            RoundedRectangle(cornerRadius: 8, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
-                .fill(Color(.systemGray6))
-        }
+        .background(Color(.systemGray6))
+//        .background {
+//            RoundedRectangle(cornerRadius: 8, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+//                .fill(Color(.systemGray6))
+//        }
         
     }
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
-    MyCoinRowView()
+    MyCoinRowView(
+        item: HomeCoinRow(
+            market: Market(market: "", korean: "korean", english: "english"),
+            ticker: CoinTicker.EmptyTicker())
+    )
 }

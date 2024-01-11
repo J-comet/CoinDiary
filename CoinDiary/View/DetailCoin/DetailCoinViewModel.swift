@@ -20,6 +20,9 @@ extension DetailCoinView {
         @Published 
         var coin: HomeCoinRow
         
+        @Published
+        var isBookmark: Bool = false
+        
         @Published 
         var detailInfos: [DetailInfo] = []   // 상세 메뉴
         
@@ -60,6 +63,7 @@ extension DetailCoinView {
             case .viewDidLoad:
                 return
             case .viewWillAppaer:
+                checkCurrentBookmarkStatus()
                 fetchMarket()
                 return
             case .viewDidAppear:
@@ -85,6 +89,28 @@ extension DetailCoinView {
             case .viewDidDisappear:
                 return
             }
+        }
+        
+        func updateCoinBookmarkStatus() {
+            if isBookmark {
+                // 포함중일 때 remove
+                removeCoin(coin: coin)
+            } else {
+                addCoin(coin: coin)
+            }
+            isBookmark.toggle()
+        }
+        
+        private func checkCurrentBookmarkStatus() {
+            isBookmark = UserDefaults.bookmarkCoins.contains(where: { $0.market.market == coin.market.market })
+        }
+        
+        private func addCoin(coin: HomeCoinRow) {
+            UserDefaults.bookmarkCoins.append(coin)
+        }
+        
+        private func removeCoin(coin: HomeCoinRow) {
+            UserDefaults.bookmarkCoins.removeAll { $0.market.market == coin.market.market }
         }
         
         func fetchMarket() {
