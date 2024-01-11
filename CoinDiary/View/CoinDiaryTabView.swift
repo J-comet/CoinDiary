@@ -17,9 +17,13 @@ struct CoinDiaryTabView: View {
             HomeView()
                 .tabItem { Image(systemName: "house") }
                 .tag(TabType.home)
-            MyView()
+            
+            MyCoinView()
                 .tabItem { Image(systemName: "square.and.pencil") }
-                .tag(TabType.my)
+                .tag(TabType.my)            
+//            MyView()
+//                .tabItem { Image(systemName: "square.and.pencil") }
+//                .tag(TabType.my)
         }
         // 위젯 관련
 //        .onOpenURL(perform: { url in

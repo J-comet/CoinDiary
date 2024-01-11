@@ -68,22 +68,22 @@ struct ChartView: View {
                 }
             }
         }
-        .chartXAxis {
-            AxisMarks(
-                preset: .extended,
-                position: .bottom,
-                values: .stride(by: .minute)
-            ) { value in
-                AxisGridLine()
-//                    AxisValueLabel() {
-//                        if let intValue = value.as(Int.self) {
-//                            Text("\(intValue)분")
-//                                .font(.system(size: 8))
-//                        }
-//                    }
-                    AxisValueLabel(format: .dateTime.minute(.twoDigits))
-                }
-        }
+//        .chartXAxis {
+//            AxisMarks(
+//                preset: .extended,
+//                position: .bottom,
+//                values: .stride(by: .minute)
+//            ) { value in
+//                AxisGridLine()
+////                    AxisValueLabel() {
+////                        if let intValue = value.as(Int.self) {
+////                            Text("\(intValue)분")
+////                                .font(.system(size: 8))
+////                        }
+////                    }
+//                    AxisValueLabel(format: .dateTime.minute(.twoDigits))
+//                }
+//        }
         .chartScrollableAxes(.horizontal)
         .chartScrollPosition(x: $scrollPosition)
         .chartYScale(domain: minVal...maxVal)

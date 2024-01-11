@@ -73,6 +73,7 @@ struct HomeView: View {
                                 HomeRowView(item: item)
                                     .frame(maxWidth: .infinity)
                                     .background(.white)
+                                
                             }
                             .buttonStyle(PlainButtonStyle())   // HomeRowView 내부 텍스트 컬러값 적용
 
