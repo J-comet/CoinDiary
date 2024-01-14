@@ -61,7 +61,7 @@ extension MyCoinView {
             case .viewDidLoad:
                 return
             case .viewWillAppaer:
-//                fetchMarket()
+                fetchMarket()
                 return
             case .viewDidAppear:
                 return

@@ -26,11 +26,11 @@ enum CoinChangeStatus: String {
     var txtColor: String {
         return switch self {
         case .rise:
-            "1560bd"
+            "ed2939"
         case .even:
             "000000"
         case .fall:
-            "ed2939"
+            "1560bd"
         }
     }
 }

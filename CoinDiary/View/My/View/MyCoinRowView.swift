@@ -42,7 +42,7 @@ struct MyCoinRowView: View {
                         .frame(width: 16, height: 16)
                         .foregroundStyle(Color(hex: item.ticker.coinChangeStatus.txtColor))
                     
-                    Text("\(item.ticker.changeRateValue)")
+                    Text("\(item.ticker.changeRateValue) %")
                         .font(.title2)
                         .bold()
                         .foregroundStyle(Color(hex: item.ticker.coinChangeStatus.txtColor))
