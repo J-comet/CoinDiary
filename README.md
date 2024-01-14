@@ -13,8 +13,8 @@
 <br>
 
 ### 미리보기
-<p align="center" witdh="100%">
-<img src="https://i.imgur.com/uVmTTNF.gif" width="24%">
+<p align="leading" witdh="100%">
+<img src="https://github.com/J-comet/CoinZoom/assets/67407666/c338a7ae-ff6d-4c67-a26f-0057a293133f" width="24%">
 <img src="https://i.imgur.com/bRV9mzs.gif" width="24%">
 <img src="https://i.imgur.com/ucRXsks.gif" width="24%">
 </p>
@@ -55,8 +55,8 @@
 <br>
 
 ### 트러블슈팅
-- WebSocket 연결 및 해제 관리
-  ...
+- WebSocket 연결 및 해제 관리의 어 이슈
+  
   
 - 상세페이지에서 돌아왔을 때 관심종목 List 업데이트 되지 않는 오류
   ...
