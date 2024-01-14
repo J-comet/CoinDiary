@@ -13,7 +13,11 @@
 <br>
 
 ### 미리보기
-
+<p align="center" witdh="100%">
+<img src="https://i.imgur.com/uVmTTNF.gif" width="24%">
+<img src="https://i.imgur.com/bRV9mzs.gif" width="24%">
+<img src="https://i.imgur.com/ucRXsks.gif" width="24%">
+</p>
 
 <br>
 
