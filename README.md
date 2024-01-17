@@ -55,8 +55,41 @@
 <br>
 
 ### 트러블슈팅
-- WebSocket 연결 및 해제 관리의 어 이슈
+- WebSocket 연결 및 해제 관리 이슈
+  -> 현재 모든 View 에서 소켓 통신을 하고 있습니다. ViewModel 의 deinit or View 의 onDisappear 내에서 소켓통신 해제를 했더니 다른 View 내에서는 소켓통신이 되지 않았습니다. <br>
+  View 가 생성될 때 다시 연결하는 코드를 먼저 작성했었습니다. 하지만 모든 View 가 통신 중이라면 소켓 연결은 유지하되 서버에 원하는 데이터를 재요청하는 것이 관리하기 좋을 것 같다고 판단했습니다. <br>
+  Background or Forground 의 상태일 때만 체크 해서 소켓 통신을 연결 해제 하도록 수정했습니다. <br>
+
+<br>
+
+```swift
+       ....
+            // onChange 앱 생명주기에 따라 소켓 상태 제어
+            .onChange(of: scenePhase) { oldValue, newValue in
+                switch newValue {
+                case .active:
+                    WebSocketManager.shared.openWebSocket()
+                    viewModel.fetchAllMarket()
+                    print("active")
+                case .inactive:
+                    print("inactive")
+                case .background:
+                    print("background")
+                    WebSocketManager.shared.closeWebSocket()
+                @unknown default:
+                    print("error")
+                }
+            }
+
+```
+
+<br>
+  
+- 하단 탭 View 전환시 관심 종목 데이터 업데이트 안되는 이슈
+  -> ViewModel 의 init() 구문에서 현재 데이터를 update 해주고 있었습니다. <br>
+  그래서 한번만 호출되고 호출되지 않는 문제가 있어 View 가 나타날 때 onAppear 메서드가 실행되는데 데이터를 업데이트 하는 코드를 onAppear 에서 실행하도록 수정했습니다. <br>
+  이후 데이터가 잘업데이트 되었지만 학습하면서 task 에 대해 알게되었습니다. <br>
+  iOS15 부터는 task 가 새로 등장하였습니다. onAppear 와 다른 점은 비동기통신이 끝나지 않았는데 View 가 종료되는 경우 <br>
+  task 쪽에서 실행한 비동기코드를 취소해준다는 장점이 있었습니다. 비동기통신을 다루게 되는 로직은 onAppear 보다는 task 를 사용하는 것이 이점이 있었습니다. <br>
   
   
-- 상세페이지에서 돌아왔을 때 관심종목 List 업데이트 되지 않는 오류
-  ...
