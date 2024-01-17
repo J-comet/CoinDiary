@@ -22,14 +22,14 @@ extension HomeView {
         
         deinit {
             print("HomeViewModel DeInit")
-            WebSocketManager.shared.closeWebSocket()
+//            WebSocketManager.shared.closeWebSocket()
         }
         
         init() {
             print("HomeViewModel Init")
             bind()
             // 처음 데이터 업데이트 사용
-            fetchAllMarket()
+//            fetchAllMarket()
             
             // 뒤로가기후 업데이트하기위해 해당 View 의 onAppear() 메서드 내에 fetchAllMarket() 사용
         }
